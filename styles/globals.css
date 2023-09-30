@@ -52,6 +52,7 @@ body {
   display: flex;
   z-index: 2;
   align-items: center;
+  justify-content: space-between;
 }
 
 .profileInnerDiv {
@@ -156,6 +157,14 @@ body {
   position: relative;
   width: 250px;
   margin-left: 100px;
+  margin-top: 35px;
+  z-index: 2;
+ }
+
+ .keypairBox {
+  position: relative;
+  width: 250px;
+  margin-left: 10px;
   margin-top: 40px;
   z-index: 2;
  }
@@ -433,6 +442,19 @@ section .wave.wave4 {
   }
 }
 
-.buttonAlign {
-  
+.box p {
+  color: black;
+}
+
+.publicKey {
+  width: 200px;
+  white-space: nowrap;
+  overflow-x: scroll; /* Use scroll instead of auto */
+  scrollbar-width: thin; /* For Firefox */
+  scrollbar-color: transparent transparent; /* For Firefox */
+  -ms-overflow-style: none; /* For Internet Explorer and Edge */
+}
+
+.publicKey::-webkit-scrollbar {
+  width: 0; /* For Chrome, Safari, and Opera */
 }

@@ -54,29 +54,20 @@ function Home() {
 
 </div>
 <div className="appDiv">
-  <div className="NavDiv">
-    <nav className="profileDiv">
-      <div className="profileOutterDiv">
-        <div className="profileInnerDiv">
-          <img src="./logo.png" alt="Profile Image" />
-        </div>
-        <div className="profileInnerDiv" style={{ width: 'auto' }}>
-          <div>
-            <p>John Lee</p>
-            <p>Public key code</p>
-          </div>
-        </div>
-      </div>   
+<div className="NavDiv">
+          <nav className="profileDiv">
+            <div className="profileInnerDiv">
+              <img src="./logo.png" alt="Profile Image" />
+            </div>
+            <div className="profileInnerDiv" style={{ width: 'auto' }}>
+              <div>
+                <WalletMultiButton/>
+              </div>
+            </div>
             
-      
-    </nav>
-    <div className="profileDiv">              
-        <div className="mr-10"><div className="w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-    <WalletMultiButton/>
-    </div>
-  </div>              
-      </div>
-  </div>
+          </nav>
+        </div>
+
   <br/>
   {publicKey ? <div className='place-items-center grid '>
     <Button onClick={handleWalletBalanceRequest}>Request Wallet Balance</Button>
@@ -96,8 +87,7 @@ function Home() {
           </div>
           <div className="pendingInnerDiv" style={{ width: 'auto' }}>
             <div>
-              <p>Eemun Leong</p>
-              <p>Public key code</p>
+              <p className="publicKey">GCZUCUtd5PxucA8qFxVQkhWbaH7eyAuJ8v4rk66G4F4T</p>
             </div>
           </div>
         </div>
@@ -125,8 +115,7 @@ function Home() {
           </div>
           <div className="pendingInnerDiv" style={{ width: 'auto' }}>
             <div>
-              <p>Eemun Leong</p>
-              <p>Public key code</p>
+              <p className="publicKey">GCZUCUtd5PxucA8qFxVQkhWbaH7eyAuJ8v4rk66G4F4T</p>
             </div>
           </div>
         </div>
@@ -135,7 +124,7 @@ function Home() {
       <div className="pendingDiv">
         <div className="pendingInnerDiv" style={{ width: 'auto' }}>
           <div>
-            <p>$30.99</p>
+            {/* <p>$30.99</p> */}
             <p>2 SOL</p>
           </div>
         </div>
@@ -154,8 +143,7 @@ function Home() {
           </div>
           <div className="pendingInnerDiv" style={{ width: 'auto' }}>
             <div>
-              <p>Eemun Leong</p>
-              <p>Public key code</p>
+              <p className="publicKey">GCZUCUtd5PxucA8qFxVQkhWbaH7eyAuJ8v4rk66G4F4T</p>
             </div>
           </div>
         </div>
@@ -164,7 +152,7 @@ function Home() {
       <div className="pendingDiv">
         <div className="pendingInnerDiv" style={{ width: 'auto' }}>
           <div>
-            <p>$30.99</p>
+            {/* <p>$30.99</p> */}
             <p>2 SOL</p>
           </div>
         </div>
