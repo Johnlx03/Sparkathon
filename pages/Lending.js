@@ -1,34 +1,32 @@
 // pages/NewPage.js
 import { Inter } from 'next/font/google';
-import { useRouter } from 'next/router'; 
-import { useWalletTokenBalance } from '@lndgalante/solutils';
 import { useConnection, useWallet } from '@solana/wallet-adapter-react';
 import { WalletMultiButton } from '@solana/wallet-adapter-react-ui';
-import dynamic from 'next/dynamic';
-import Button from '@/components/Button';
-import { Dispatch, SetStateAction } from "react";
 import Wallet from "@/components/Wallet";
 import React, { useState } from 'react';
-import { Connection, Keypair } from "@solana/web3.js";
+import {
+  Connection,
+  Keypair,
+  PublicKey,
+  SystemProgram,
+  TransactionMessage,
+  VersionedTransaction,
+} from "@solana/web3.js";
 import Link from 'next/link';
 
 const inter = Inter({ subsets: ['latin'] })
+const connection = new Connection("https://api.devnet.solana.com", "confirmed");
 
-const NewPage = ({
-  connection
-}) =>  {
+const NewPage = () =>  {
   // transaction part start 
-  const [keypair, setKeypair] = useState("GoEpS3aPcWeXF8965Jb7cdf8QqDeoANtUFs6ubvFU5xq");
+  const [keypair, setKeypair] = useState("CJbZZzxpTmCexj53fFFt9D1dyRKWa6xJcZNCayGnciGS");
  {keypair && <Wallet keypair={keypair} />}
   const [airdropped, setAirdropped] = useState(false);
   const [airdropping, setAirdropping] = useState(false);
-  const { publicKey } = useWallet();
-
-  const { getWalletTokenBalance, result, status, error } = useWalletTokenBalance(publicKey, connection);
-
-  function handleWalletBalanceRequest() {
-    getWalletTokenBalance('SOL');
-  }
+  const [txid, setTxid] = useState("");
+  const [recipient, setRecipient] = useState("");
+  const [amountToTransfer, setAmountToTransfer] = useState(0);
+  const [isSending, setIsSending] = useState(false);
 
   const onClickAirdrop = async () => {
     if (!keypair) return;
@@ -37,13 +35,16 @@ const NewPage = ({
     setAirdropped(true);
 
     try {
+      const publicKey = new PublicKey(keypair);
       /** Exercise 2, use the connection object to request an airdrop to your Keypair */
       const txid = await connection.requestAirdrop(
-        keypair,
+        publicKey,
         1_000_000_000
       );
+      console.log("Airdrop requested, TXID:", txid);
 
       const result = await connection.confirmTransaction(txid);
+      console.log("Airdrop confirmed, Result:", result);
       /** End of exercise 2 */
 
       if ("err" in result) {
@@ -51,9 +52,46 @@ const NewPage = ({
         throw new Error("Failed to airdrop");
       }
     } catch (error) {
-      // ignore
+      console.error("Error during airdrop:", error);
     } finally {
       setAirdropping(false);
+    }
+  };
+
+  const onClickTransfer = async () => {
+    if (!keypair) return;
+
+    try {
+      new PublicKey(recipient);
+    } catch (error) {
+      alert("Invalid Public Key");
+      return;
+    }
+
+    setIsSending(true);
+
+    try {
+      const ix = SystemProgram.transfer({
+        fromPubkey: keypair.publicKey,
+        toPubkey: new PublicKey(recipient),
+        lamports: amountToTransfer,
+      });
+
+      const { blockhash } = await connection.getLatestBlockhash();
+      const messageV0 = new TransactionMessage({
+        payerKey: keypair.publicKey,
+        recentBlockhash: blockhash,
+        instructions: [ix],
+      }).compileToV0Message();
+
+      const verTx = new VersionedTransaction(messageV0);
+      verTx.sign([keypair]);
+      const txid = await connection.sendTransaction(verTx);
+      setTxid(txid);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setIsSending(false);
     }
   };
 
@@ -117,11 +155,13 @@ const NewPage = ({
           <>
       {keypair && <Wallet keypair={keypair} />}
       <div className="mt-6">
-        <p className="font-semibold">Airdrop</p>
+        <p className="font-semibold">Airdop</p>
         <div className="mt-4">
           {(() => {
             if (airdropping) {
               return (
+                <div class="center">
+          <div class="outer button">
                 <button
                   type="button"
                   disabled
@@ -129,31 +169,101 @@ const NewPage = ({
                 >
                   Airdropping...
                 </button>
+                </div></div>
               );
             }
 
             if (airdropped) {
               return (
+                <div class="center">
+          <div class="outer button">
                 <button
                   type="button"
                   disabled
                   className="cursor-not-allowed opacity-50 text-black backdrop-blur-2xl rounded-xl px-4 py-2 bg-white"
                 >
-                  Already Airdropped
+                  Airdropped
                 </button>
+                </div></div>
               );
             }
 
             return (
+              <div class="center">
+          <div class="outer button">
               <button
                 type="button"
                 onClick={onClickAirdrop}
                 className="text-black backdrop-blur-2xl rounded-xl px-4 py-2 bg-white"
               >
-                Click to Airdrop
+               Airdrop
               </button>
+              </div></div>
             );
           })()}
+        </div>
+      </div>
+    </>
+
+    <>
+      {keypair && <Wallet keypair={keypair} />}
+      <div className="mt-6">
+        <p className="font-semibold">Transfer SOL</p>
+        <div className="mt-4">
+          Recipient:{" "}
+          <input
+            value={recipient}
+            className="text-black rounded-lg border border-black/10 px-2 py-1 w-full max-w-[480px]"
+            onChange={(e) => {
+              setRecipient(e.target.value);
+            }}
+          />
+        </div>
+        <div className="mt-4">
+          Amount to transfer:{" "}
+          <input
+            className="text-black rounded-lg border border-black/10 px-2 py-1"
+            value={amountToTransfer}
+            onChange={(e) => {
+              setAmountToTransfer(e.target.valueAsNumber);
+            }}
+            type="number"
+          />
+        </div>
+
+        {isSending ? (
+          <button
+            type="button"
+            disabled
+            className="text-black backdrop-blur-2xl rounded-xl px-4 py-2 bg-white mt-4 cursor-not-allowed opacity-50"
+          >
+            Sending...
+          </button>
+        ) : (
+          <button
+            type="button"
+            onClick={onClickTransfer}
+            className="text-black backdrop-blur-2xl rounded-xl px-4 py-2 bg-white mt-4"
+          >
+            Transfer
+          </button>
+        )}
+      </div>
+
+      <div className="mt-6">
+        <p className="font-semibold">Transaction ID:</p>
+        <div className="mt-4 text-xs">{txid}</div>
+
+        <div className="flex mt-4">
+          {txid ? (
+            <a
+              href={`https://explorer.solana.com/tx/${txid}?cluster=devnet`}
+              target="_blank"
+              className="text-black backdrop-blur-2xl rounded-xl px-4 py-2 bg-white"
+            >
+              Open Explorer
+            </a>
+          ) : null}
         </div>
       </div>
     </>

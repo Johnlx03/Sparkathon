@@ -59,11 +59,19 @@ function Home() {
             <div className="profileInnerDiv">
               <img src="./logo.png" alt="Profile Image" />
             </div>
+            
+            {/* <div className="profileInnerDiv" style={{ width: 'auto' }}>
+              <div>
+                <p className="publicKey">GCZUCUtd5PxucA8qFxVQkhWbaH7eyAuJ8v4rk66G4F4T</p>
+              </div>
+            </div> */}
             <div className="profileInnerDiv" style={{ width: 'auto' }}>
               <div>
                 <WalletMultiButton/>
               </div>
             </div>
+            
+            
             
           </nav>
         </div>
@@ -73,7 +81,7 @@ function Home() {
     <Button onClick={handleWalletBalanceRequest}>Request Wallet Balance</Button>
     {/* {status === 'iddle' ? <p>Haven&apos;t requested any SOL balance yet</p> : null} */}
     {status === 'loading' ? <p>Requesting your SOL balance tokens</p> : null}
-    {status === 'success' ? <p>We successfully got your balance: {result} SOL</p> : null}
+    {status === 'success' ? <p>Your balance: {result} SOL</p> : null}
     {status === 'error' ? <p>{error}</p> : null}
   </div> : null}
   <div className="pendingDebt">
@@ -115,7 +123,7 @@ function Home() {
           </div>
           <div className="pendingInnerDiv" style={{ width: 'auto' }}>
             <div>
-              <p className="publicKey">GCZUCUtd5PxucA8qFxVQkhWbaH7eyAuJ8v4rk66G4F4T</p>
+              {/* <p className="publicKey">CJbZZzxpTmCexj53fFFt9D1dyRKWa6xJcZNCayGnciGS</p> */}
             </div>
           </div>
         </div>
@@ -125,7 +133,7 @@ function Home() {
         <div className="pendingInnerDiv" style={{ width: 'auto' }}>
           <div>
             {/* <p>$30.99</p> */}
-            <p>2 SOL</p>
+            {/* <p>5 SOL</p> */}
           </div>
         </div>
       </div>
@@ -160,9 +168,9 @@ function Home() {
     </div>          
   </div>
 
-  <div class="center">
+  <div class="center1">
           <div class="outer button">
-          <Link href="Lending"><button>Request</button></Link>
+          <Link href="Borrow"><button>Borrow</button></Link>
             <span></span>
             <span></span>
           </div>
@@ -171,7 +179,7 @@ function Home() {
             <span></span>
             <span></span>
           </div>
-         </div>
+  </div>
   
    
 </div>
@@ -186,3 +194,4 @@ function Home() {
 }
 
 export default dynamic (() => Promise.resolve(Home), {ssr: false} )
+  
