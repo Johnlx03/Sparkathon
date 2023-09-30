@@ -66,8 +66,9 @@ const NewPage = () =>  {
           <nav className="profileDiv">
             <div className="profileInnerDiv">
               <img src="./logo.png" alt="Profile Image" />
+              <p class="finaltest">Loan</p>
             </div>
-            <div class="buttonAlign">
+            <div className="buttonright">
               <WalletMultiButton/>
             </div>
             

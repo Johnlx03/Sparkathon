@@ -102,8 +102,9 @@ const NewPage = () =>  {
           <nav className="profileDiv">
             <div className="profileInnerDiv">
               <img src="./logo.png" alt="Profile Image" />
+              <p class="finaltest">Lending/Sending</p>
             </div>
-            <div class="buttonAlign">
+            <div class="buttonright">
               <WalletMultiButton/>
             </div>
             
@@ -114,8 +115,8 @@ const NewPage = () =>  {
         
         <div class="box">
           <div class="keypairBox">
-            <p>Your Keypair:</p>
-            <p>{keypair}</p>
+            {/* <p>Your Keypair:</p>
+            <p>{keypair}</p> */}
           </div>
 
           <div class="inputBox">
@@ -155,13 +156,12 @@ const NewPage = () =>  {
           <>
       {keypair && <Wallet keypair={keypair} />}
       <div className="mt-6">
-        <p className="font-semibold">Airdop</p>
         <div className="mt-4">
           {(() => {
             if (airdropping) {
               return (
                 <div class="center">
-          <div class="outer button">
+          <div class="outer button2">
                 <button
                   type="button"
                   disabled
@@ -176,7 +176,7 @@ const NewPage = () =>  {
             if (airdropped) {
               return (
                 <div class="center">
-          <div class="outer button">
+          <div class="outer button2">
                 <button
                   type="button"
                   disabled
@@ -190,7 +190,7 @@ const NewPage = () =>  {
 
             return (
               <div class="center">
-          <div class="outer button">
+              <div class="outer button2">
               <button
                 type="button"
                 onClick={onClickAirdrop}
@@ -254,17 +254,7 @@ const NewPage = () =>  {
         <p className="font-semibold">Transaction ID:</p>
         <div className="mt-4 text-xs">{txid}</div>
 
-        <div className="flex mt-4">
-          {txid ? (
-            <a
-              href={`https://explorer.solana.com/tx/${txid}?cluster=devnet`}
-              target="_blank"
-              className="text-black backdrop-blur-2xl rounded-xl px-4 py-2 bg-white"
-            >
-              Open Explorer
-            </a>
-          ) : null}
-        </div>
+        
       </div>
     </>
          

@@ -54,6 +54,7 @@ body {
   align-items: center;
   border-bottom: 1px solid white;
   justify-content: space-between;
+  /* padding-bottom: 200px; */
 }
 
 .profileInnerDiv {
@@ -117,6 +118,10 @@ body {
   border-radius: 5px;
 }   
 
+.buttonright {
+  margin-right: 10px;
+}
+
 /Pendind Div End/
 
 .buttonDiv{
@@ -168,6 +173,11 @@ body {
   margin-left: 10px;
   margin-top: 40px;
   z-index: 2;
+ }
+
+ .finaltest {
+  margin-top: 15px;
+  margin-left: 20px;
  }
 
 .box {
@@ -223,6 +233,7 @@ body {
   box-shadow: none;
   font-size: 1em;
   letter-spacing: 0.1em;
+  margin-top: 20px;
  }
 
  .inputBox span {

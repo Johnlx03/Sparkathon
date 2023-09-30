@@ -53,8 +53,8 @@ function Home() {
 <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
 
 </div>
-<div className="appDiv">
-<div className="NavDiv">
+            <div className="appDiv">
+            <div className="NavDiv">
           <nav className="profileDiv">
             <div className="profileInnerDiv">
               <img src="./logo.png" alt="Profile Image" />
@@ -95,7 +95,7 @@ function Home() {
           </div>
           <div className="pendingInnerDiv" style={{ width: 'auto' }}>
             <div>
-              <p className="publicKey">GCZUCUtd5PxucA8qFxVQkhWbaH7eyAuJ8v4rk66G4F4T</p>
+              {/* <p className="publicKey">GoEpS3aPcWeXF8965Jb7cdf8QqDeoANtUFs6ubvFU5xq</p> */}
             </div>
           </div>
         </div>
@@ -105,7 +105,7 @@ function Home() {
         <div className="pendingInnerDiv" style={{ width: 'auto' }}>
           <div>
             {/* <p>$30.99</p> */}
-            <p>2 SOL</p>
+            {/* <p>2 SOL</p> */}
           </div>
         </div>
       </div>
@@ -123,7 +123,7 @@ function Home() {
           </div>
           <div className="pendingInnerDiv" style={{ width: 'auto' }}>
             <div>
-              {/* <p className="publicKey">CJbZZzxpTmCexj53fFFt9D1dyRKWa6xJcZNCayGnciGS</p> */}
+              {/* <p className="publicKey">GCZUCUtd5PxucA8qFxVQkhWbaH7eyAuJ8v4rk66G4F4T</p> */}
             </div>
           </div>
         </div>
@@ -133,7 +133,7 @@ function Home() {
         <div className="pendingInnerDiv" style={{ width: 'auto' }}>
           <div>
             {/* <p>$30.99</p> */}
-            {/* <p>5 SOL</p> */}
+            {/* <p>2 SOL</p> */}
           </div>
         </div>
       </div>
@@ -151,7 +151,7 @@ function Home() {
           </div>
           <div className="pendingInnerDiv" style={{ width: 'auto' }}>
             <div>
-              <p className="publicKey">GCZUCUtd5PxucA8qFxVQkhWbaH7eyAuJ8v4rk66G4F4T</p>
+              {/* <p className="publicKey">GoEpS3aPcWeXF8965Jb7cdf8QqDeoANtUFs6ubvFU5xq</p> */}
             </div>
           </div>
         </div>
@@ -161,7 +161,7 @@ function Home() {
         <div className="pendingInnerDiv" style={{ width: 'auto' }}>
           <div>
             {/* <p>$30.99</p> */}
-            <p>2 SOL</p>
+            {/* <p>2 SOL</p> */}
           </div>
         </div>
       </div>
