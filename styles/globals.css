@@ -4,7 +4,7 @@
 
 :root {
   --foreground-rgb: 255, 255, 255;
-  --background-start-rgb: 0, 0, 0;
+  --background-start-rgb: 255,204,229;
   --background-end-rgb: 0, 0, 0;
   --gradient-start: #001a33; /* Dark blue */
   --gradient-end: #85ffae;
@@ -30,4 +30,409 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+}
+
+.appDiv {
+  width: 45%;
+  height: 700px;
+  background-color: rgb(32, 32, 32);
+  position: relative;
+}
+
+/Nav Code Start/
+.NavDiv{
+  background-color: black;
+  width: 100%;
+  height: 80px;
+  display: flex;
+}
+
+.profileDiv {
+  overflow: hidden;
+  display: flex;
+  z-index: 2;
+  align-items: center;
+}
+
+.profileInnerDiv {
+  color: azure;
+  width: 60px;
+  height: auto;
+  margin: 10px;
+  display: flex;
+}
+
+.profileInnerDiv img {
+  width: 100%;    
+  border-radius: 5px;
+}
+
+/Nav Code End/
+
+/Pendind Div Start/
+.pendingDebt{  
+  background-color: slateblue;
+  width: 90%;
+  height: auto;    
+  border-radius: 10px;
+  padding-bottom: 20px;
+  margin: auto;
+}
+.pendingBigDiv {
+  background-color: black;
+  border-radius: 10px;
+  width: 90%;
+  margin: auto;
+  height: auto;
+  display: flex;
+  justify-content: space-between;
+  
+}
+
+.pendingDiv {
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.pendingOutter{
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.pendingInnerDiv{
+  color: azure;
+  width: 60px;
+  height: auto;
+  margin: 10px;
+  display: flex;
+}
+
+.pendingInnerDiv img {
+  width: 100%;    
+  border-radius: 5px;
+}   
+
+/Pendind Div End/
+
+.buttonDiv{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  margin: auto;
+   
+}
+
+.buttonIndexDiv{
+  margin: auto;
+} 
+
+.buttonIndex {
+  border: solid 2px slateblue;
+  color: #cab2fb;
+  background-color: slateblue;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 5%;
+  width: 40%;
+}
+
+.buttonIndexDiv :hover .buttonIndex1 {
+  background-color: #001a33;
+  color: white;
+  transition: all 0.3s ease-in-out;
+}
+
+.buttonIndexDiv :hover .buttonIndex2 {
+  background-color: #001a33;
+  color: white;
+  transition: all 0.3s ease-in-out;
+}
+ /* transition duration-300 ease-in-out py-2 px-4 rounded-lg" */
+
+ .inputBox {
+  position: relative;
+  width: 250px;
+  margin-left: 100px;
+  margin-top: 40px;
+  z-index: 2;
+ }
+
+.box {
+  position: relative;
+  margin-left: 70px;
+  width: 450px;
+  height: 250px;
+  justify-content: center;
+  align-items: center;
+  background: black;
+  border-radius: 20px;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.box::before {
+  content: '';
+  position: absolute;
+  width: 220px;
+  margin-left: 120px;
+  margin-top: -120px;
+  height: 200%;
+  background: linear-gradient(#00ccff, #d400d4);
+  animation: test 4s linear infinite;
+}
+
+.box::after {
+  content: '';
+  position: absolute;
+  border-radius: 20px;
+  inset: 4px;
+  background: pink;
+
+}
+
+@keyframes test {
+  0%
+  {
+    transform: rotate(0deg);
+  }
+  100%
+  {
+    transform: rotate(360deg);
+  }
+}
+
+ .inputBox input {
+  width: 100%;
+  background: transparent;
+  color: #d400d4;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  font-size: 1em;
+  letter-spacing: 0.1em;
+ }
+
+ .inputBox span {
+  position: absolute;
+  left: 0;
+  padding: 0px 0 5px;
+  color: black;
+  text-transform: uppercase;
+  pointer-events: none;
+  letter-spacing: 0.1em;
+  transition: 0.5s;
+ }
+
+ .inputBox input:valid ~ span,
+ .inputBox input:focus ~ span
+ {
+  color: #d400d4;
+  transform: translateY(-16px);
+  font-size: 0.65em;
+ }
+
+ .inputBox i {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background: black;
+  overflow: hidden;
+ }
+
+ .inputBox i::before {
+  content: '';
+  position: absolute;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, #00ccff, #d400d4);
+  animation: animate 2s linear infinite;
+  transition: 0.5s;
+ }
+
+ .inputBox input:valid ~ i::before,
+ .inputBox input:focus ~ i::before
+ {
+  left: 0%;
+ }
+
+ @keyframes animate
+ {
+  0%
+  {
+    background-position-x: 0;
+  }
+  100%
+  {
+    background-position-x: 250px;
+  }
+ }
+
+.center {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  margin-top: 110px;
+}
+
+.outer {
+  position: relative;
+  margin: 0 50px;
+  background: transparent;
+}
+
+.button {
+  height: 70px;
+  width: 220px;
+  border-radius: 50px;
+}
+
+.outer button, .outer span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.outer button {
+  background: #111;
+  color: #f2f2f2;
+  outline: none;
+  border: none;
+  font-size: 20px;
+  z-index: 9;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.button button {
+  height: 60px;
+  width: 190px;
+  border-radius: 50px;
+}
+
+.outer span {
+  height: 100%;
+  width: 100%;
+  background: inherit;
+}
+
+.button span {
+  border-radius: 50px;
+}
+
+.outer:hover span:nth-child(1) {
+  filter: blur(7px);
+}
+
+.outer:hover span:nth-child(2) {
+  filter: blur(14px);
+}
+
+.outer:hover {
+  background: linear-gradient(#00ccff, #d400d4);
+  animation: rotate 1.5s linear infinite;
+}
+
+@keyframes rotate {
+  0%{
+    filter: hue-rotate(0deg);
+  }
+  100%{
+    filter: hue-rotate(360deg);
+  }
+}
+
+@media (max-width: 640px) {
+  .center {
+    flex-wrap: wrap;
+    flex-direction: column;
+  }
+  
+  .outer {
+    margin: 50px 0px;
+  }
+}
+
+section {
+  position: relative;
+  width: 100%;
+  height: 26vh;
+  background: rgb(32, 32, 32) ;
+  overflow: hidden;
+}
+
+section .wave {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background: url(.././public/wave.png);
+  background-size: 700px 100px;
+}
+
+section .wave.wave1 {
+  animation: animate 30s linear infinite;
+  z-index: 1000;
+  opacity: 1;
+  animation-delay: 0s;
+  bottom: 0;
+}
+
+section .wave.wave2 {
+  animation: animate2 15s linear infinite;
+  z-index: 999;
+  opacity: 0.5;
+  animation-delay: -5s;
+  bottom: 10px;
+}
+
+section .wave.wave3 {
+  animation: animate 30s linear infinite;
+  z-index: 998;
+  opacity: 0.2;
+  animation-delay: -2s;
+  bottom: 15;
+}
+
+section .wave.wave4 {
+  animation: animate2 5s linear infinite;
+  z-index: 997;
+  opacity: 0.7;
+  animation-delay: -5s;
+  bottom: 20px;
+}
+
+@keyframes animate
+{
+  0%
+  {
+    background-position-x: 0;
+  }
+  100%{
+    background-position-x:700px;
+  }
+}
+
+@keyframes animate2
+{
+  0%
+  {
+    background-position-x: 0;
+  }
+  100%{
+    background-position-x:-700px;
+  }
+}
+
+.buttonAlign {
+  
 }

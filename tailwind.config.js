@@ -8,7 +8,8 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'cab2fb': '#cab2fb',  // Add this line to include the custom color
+        'Slateblue': '#6A5ACD',
+        'Black': '#000000', // Add this line to include the custom color
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
